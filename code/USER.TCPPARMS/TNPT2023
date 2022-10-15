@@ -1,0 +1,27 @@
+TelnetParms         ; ATTLS defined secure port 
+ TTLSPort 2023      ; 
+ DEBUG CONN DETAIL JOBLOG 
+ DEBUG CONN trace  CTRACE 
+ ConnType Secure    ; Client chooses secure or nonsecure connection. 
+ NOSSLV2 
+ NOSSLV3 ;Force TLS 
+ Encryption 
+ SSL_AES_256_SHA ;Strong one! 
+ EndEncryption 
+EndTelnetParms 
+                                                                      
+BeginVTAM 
+ Port 2023 
+ DEFAULTLUS 
+   TLS00001..TLS00030 
+ ENDDEFAULTLUS 
+ ALLOWAPPL TSO* DISCONNECTABLE ; Allow all users access to TSO 
+             ; applications. 
+              ; TSO is multiple applications all beginning with TSO, 
+              ; so use the * to get them all.  If a session is closed, 
+              ; disconnect the user rather than log off the user. 
+ ALLOWAPPL *  ; Allow all applications that have not been 
+              ; previously specified to be accessed. 
+                                                                         
+ USSTCP USSN 
+EndVTAM              

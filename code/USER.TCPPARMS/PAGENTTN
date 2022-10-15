@@ -1,0 +1,69 @@
+TTLSRule                      TN 
+{ 
+  LocalPortRange              2023 
+  Jobname                     TN3270 
+  Direction                   INBOUND 
+  TTLSConnectionActionRef     TNCA   
+  TTLSGroupActionRef          TNGA 
+  TTLSEnvironmentActionRef    TNEA 
+
+} 
+TTLSConnectionAction              TNCA 
+{ 
+  TTLSCipherParmsRef              TLS13TLS12 
+  TTLSSignatureParmsRef           TNESigParms 
+  TTLSConnectionAdvancedParmsRef  TNCOonAdvParms 
+  CtraceClearText                 Off 
+  Trace                           50 
+} 
+TTLSConnectionAdvancedParms       TNCOonAdvParms 
+{ 
+ ServerCertificateLabel  NISTECC521 
+ ServerCertificateLabel  RSA2048 
+#ccp this was added 
+  ApplicationControlled         On 
+  SSLv3          OFF 
+  TLSv1          OFF 
+  TLSv1.1        OFF 
+  TLSv1.2        ON 
+  TLSv1.3        OFF 
+  SecondaryMap   OFF 
+  HandshakeTimeout 3 
+} 
+
+TTLSGroupAction      TNGA 
+{ 
+  TTLSEnabled        ON 
+  trace              50 
+} 
+TTLSKeyringParms    TNKEYRING 
+{ 
+  Keyring           START1/TN3270 
+} 
+
+TTLSEnvironmentAction      TNEA 
+{ 
+  HandshakeRole            Server 
+  TTLSKeyringParms 
+  { 
+    Keyring                START1/TN3270 
+  } 
+  TTLSSignatureParmsRef    TNESigParms 
+} 
+TTLSSignatureParms         TNESigParms 
+{ 
+   CLientECurves Any 
+} 
+TTLSCipherParms             TLS13TLS12 
+{ 
+#TLS 1.3 
+ V3CipherSuites      TLS_CHACHA20_POLY1305_SHA256 
+#V3CipherSuites      TLS_AES_256_GCM_SHA384 
+#V3CipherSuites      TLS_AES_128_GCM_SHA256 
+#TLS 1.2 
+# NSTECC 
+ V3CipherSuites      TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 
+#RSA 
+ V3CipherSuites      TLS_RSA_WITH_AES_256_CBC_SHA256 
+} 
+﻿

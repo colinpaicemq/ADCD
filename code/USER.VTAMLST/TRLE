@@ -1,0 +1,4 @@
+OSATRL3 VBUILD TYPE=TRL                                                 00010000
+OSATRL3E TRLE LNCTL=MPC,READ=(0408),WRITE=(0409),DATAPATH=(040A),      X00020000
+               PORTNAME=PORTCP,                                        X00030000
+               MPCLEVEL=QDIO                                            00040000

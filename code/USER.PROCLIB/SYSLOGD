@@ -1,0 +1,14 @@
+//SYSLOGD PROC 
+//*     Licensed Materials - Property of IBM                          * 
+//*     "Restricted Materials of IBM"                                 * 
+//*     5650-ZOS                                                      * 
+//*     Copyright IBM Corp. 1992, 2013                                * 
+//* Read parms from /etc/syslog.conf 
+//CONFHFS EXEC PGM=SYSLOGD,REGION=4096K,TIME=NOLIMIT, 
+//         PARM='ENVAR("_CEE_ENVFILE_S=DD:STDENV")/-c -i       ' 
+//STDENV   DD DUMMY 
+//SYSPRINT DD SYSOUT=* 
+//SYSIN    DD DUMMY 
+//SYSERR   DD SYSOUT=* 
+//SYSOUT   DD SYSOUT=* 
+//CEEDUMP  DD SYSOUT=* 

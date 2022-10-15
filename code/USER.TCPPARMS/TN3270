@@ -1,0 +1,47 @@
+TelnetGlobals 
+  INACTIVE 28800 
+  SMFINIT STD 
+  DEBUG TRACE CTRACE 
+  DEBUG CONN  EXCEPTION  CTRACE 
+  SMFTERM STD 
+  TIMEMARK 14400       ; NO IP ACTIVITY FOR 4 HOURS, SEND TIMEMARK. 
+  ScanInterval 3600    ; Check for IP activity every 1 hour 
+  MAXRECEIVE  65535 
+  MAXVTAMSENDQ 50 
+  TCPIPJOBNAME TCPIP 
+  ; latest level of VTAM 
+  TELNETDEVICE 3278-2-E NSX32702 ; 24 line screen - 
+  TELNETDEVICE 3279-2-E NSX32702 ; 24 line screen - 
+  TELNETDEVICE 3278-3-E NSX32703 ; 32 line screen - 
+  TELNETDEVICE 3279-3-E NSX32703 ; 32 line screen - 
+  TELNETDEVICE 3278-4-E NSX32704 ; 48 line screen - 
+  TELNETDEVICE 3279-4-E NSX32704 ; 48 line screen - 
+  TELNETDEVICE 3278-5-E NSX32705 ; 132 column screen- 
+    TELNETDEVICE 3279-5-E NSX32705 ; 132 column screen - 
+  LUSESSIONPEND 
+                                                                           
+  ; Inactive 10800     ; No SNA terminal activity for 3 hours, drop. 
+  ; KeepInactive 10800 ; No SNA session on KeepOpen ACB for 3 hours, 
+  ;                    ; drop. 
+  ; PrtInactive 10800  ; No SNA printer activity for 3 hours, drop. 
+  ; MaxReceive  10000  ; Limit input record length lower than 65K 
+  ; MaxReqSess     50  ; Allow up to 50 new sessions in 10 seconds 
+  ; MaxRuChain   1000  ; Allow for Printer chains but limit max 
+  ; MaxVTAMSendQ  100  ; Allow 100 RPLs to queue to VTAM 
+  ; SMFINIT TYPE119    ; SMF type 119 record subtype 20 
+  ; SMFTERM TYPE119    ; SMF type 119 record subtype 21 
+  ; Format Long        ; Ensure display format is always long 
+  ;                    ; Must be set at startup and can not be changed. 
+  ; TNSAConfig         ; Start up TN SNMP subagent 
+  ;    Enabled         ; Subagent must be enabled 
+  ;    Agent 161       ; Specify agent port to contact 
+  ;    Cachetime 30    ; Rebuild MIB info if older than 30 seconds 
+  ; CRLLDAPServer      ; Define CRL LDAP server for secureport 
+  ;   CRLLDAP.RALEIGH.IBM.COM 389 
+   ;   CRLLDAP.RALEIGH.IBM.COM 389 
+  ; ENDCRLLDAPSERVER 
+EndTelnetGlobals 
+
+ include adcd.z24c.tcpparms(tnpt0023)  ; General Applications 
+ include user.z24c.tcpparms(tnpt2023)  ; TLS Support AT-TLS 
+                                                                         
