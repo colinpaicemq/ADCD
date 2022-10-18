@@ -25,8 +25,17 @@ BPXPRM00
 CONSOLCP
 :  Define a console
 
-BPXPRM00
-: COnf
+CTGSKON
+: Ctrace member for turning on CTRACE when used with GSK
+
+CTTCPS
+: Ctrace member for starting TCPIP CTRACE 
+
+CTTCPP
+: CTrace member for stopping TCPIP CTRACE
+
+IGDSMS00
+: Parmlib member for configuring SMS - same as ADCD.... version
 
 ## USER.PROCLIB 
 CTWTR
