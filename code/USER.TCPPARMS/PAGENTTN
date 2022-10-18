@@ -38,16 +38,12 @@ TTLSGroupAction      TNGA
 } 
 TTLSKeyringParms    TNKEYRING 
 { 
-  Keyring           START1/TN3270 
+  Keyring           START1/TN3270TLSring
 } 
 
 TTLSEnvironmentAction      TNEA 
 { 
   HandshakeRole            Server 
-  TTLSKeyringParms 
-  { 
-    Keyring                START1/TN3270 
-  } 
   TTLSSignatureParmsRef    TNESigParms 
 } 
 TTLSSignatureParms         TNESigParms 
@@ -66,4 +62,4 @@ TTLSCipherParms             TLS13TLS12
 #RSA 
  V3CipherSuites      TLS_RSA_WITH_AES_256_CBC_SHA256 
 } 
-﻿
+﻿h

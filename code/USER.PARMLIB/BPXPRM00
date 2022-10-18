@@ -1,0 +1,71 @@
+MAXASSIZE(2147483647) 
+MAXPROCSYS(1200) 
+MAXPROCUSER(32767) 
+MAXUIDS(400) 
+MAXFILEPROC(65535) 
+MAXPTYS(800) 
+MAXTHREADTASKS(32768) 
+MAXTHREADS(20000) 
+MAXSHAREPAGES(32768000) 
+MAXCPUTIME(7200) 
+SUPERUSER(OMVSKERN) 
+KERNELSTACKS(ABOVE) 
+CTRACE(CTIBPX00) 
+RESOLVER_PROC(RESOLVER) 
+IPCMSGQBYTES(20971520) 
+                                                                    
+VERSION('&UNIXVER.') 
+SYSPLEX(YES) 
+SYSPLEX(YES) 
+                                                                 
+FILESYSTYPE TYPE(HFS) 
+            ENTRYPOINT(GFUAINIT) 
+FILESYSTYPE TYPE(UDS) ENTRYPOINT(BPXTUINT) 
+                                                                 
+ FILESYSTYPE TYPE(AUTOMNT) ENTRYPOINT(BPXTAMD) 
+/* FILESYSTYPE TYPE(ZFS) ENTRYPOINT(IOEFSCM) ASNAME(ZFS) */ 
+/* COLIN                                                 */ 
+ FILESYSTYPE TYPE(ZFS) ENTRYPOINT(IOEFSCM) 
+ FILESYSTYPE TYPE(NFS) 
+           ENTRYPOINT(GFSCINIT) 
+           ASNAME(NFSC) 
+                                                                 
+/* CINET SUPPORT - BPXTCINT */ 
+FILESYSTYPE TYPE(CINET) 
+     ENTRYPOINT(BPXTCINT) 
+/* FILESYSTYPE TYPE(INET) ENTRYPOINT(EZBPFINI) */ 
+SUBFILESYSTYPE NAME(TCPIP) 
+       TYPE(CINET) 
+       ENTRYPOINT(EZBPFINI) 
+                                           
+SUBFILESYSTYPE NAME(TCPIP2) 
+       TYPE(CINET) 
+       ENTRYPOINT(EZBPFINI) 
+                                           
+SUBFILESYSTYPE NAME(TCPIP3) 
+       TYPE(CINET) 
+       ENTRYPOINT(EZBPFINI) 
+                                           
+SUBFILESYSTYPE NAME(TCPIP4) 
+       TYPE(CINET) 
+       ENTRYPOINT(EZBPFINI) 
+                                           
+NETWORK DOMAINNAME(AF_INET) 
+        DOMAINNUMBER(2) 
+        MAXSOCKETS(64000) 
+        TYPE(CINET)  /* COLIN */ 
+        INADDRANYPORT(5755) 
+        INADDRANYCOUNT(1000) 
+                                                
+NETWORK DOMAINNAME(AF_INET6) 
+        DOMAINNUMBER(19) 
+        MAXSOCKETS(50000) 
+        TYPE(CINET) 
+                                                
+NETWORK DOMAINNAME(AF_UNIX) 
+        DOMAINNUMBER(1) 
+        MAXSOCKETS(2000) 
+        TYPE(UDS) 
+                                                        
+                                                                 
+                                                                 

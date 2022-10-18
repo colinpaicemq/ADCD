@@ -1,0 +1,6 @@
+TRACEOPTS
+          WTRSTART(ctwtr)
+          on
+          jobname(TCPIP)
+          wtr(ctwtr)
+          OPTIONS('LEVEL=255')
